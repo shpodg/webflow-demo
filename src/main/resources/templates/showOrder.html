@@ -1,0 +1,39 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head><title>Spring Pizza</title></head>
+  <body>
+    <h2>Your order</h2>
+
+    <h3>Deliver to:</h3>
+		<b th:text="${order.customer.name}">order.customer.name</b><br/>
+		<b th:text="${order.customer.address}">order.customer.address</b><br/>
+		<b th:text="${order.customer.city}+','+${order.customer.state}+${order.customer.zipCode}">
+			city, state zipCode</b><br/>
+		<b th:text="${order.customer.phoneNumber}">phoneNumber</b><br/>
+		<hr/>
+		<h3 th:text="'Order total:'+${order.total}">Order total:</h3>
+		<hr/>
+		<h3>Pizzas:</h3>
+		
+		<b th:if="${#arrays.length(order.pizzas) eq 0}">No pizzas in this order.</b>
+
+		<br/>
+		<ul th:each="pizza : ${order.pizzas}">
+			<li><span th:text="${pizza.size}+':'"></span>
+				<span th:each="toping : ${pizza.toppings}" th:text="${toping}"></span>
+			</li>
+		</ul>
+
+    <form method="post">
+      <input type="hidden" name="_flowExecutionKey" 
+             th:value="${flowExecutionKey}"/>
+      <input type="submit" name="_eventId_createPizza" 
+             value="Create Pizza" />
+      <input type="submit" name="_eventId_checkout" 
+             value="Checkout" th:unless="${#arrays.length(order.pizzas) eq 0}" />
+      <input type="submit" name="_eventId_cancel" 
+             value="Cancel" />
+    </form>
+
+	</body>
+</html>

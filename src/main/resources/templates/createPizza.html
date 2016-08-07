@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div>
+
+    <h2>Create Pizza</h2>
+    <form th:object="${pizza}" method="post">
+        <input type="hidden" name="_flowExecutionKey"
+               th:value="${flowExecutionKey}"/>
+
+        <b>Size: </b><br/>
+        <label>Small (12-inch)</label>
+        <input type="radio" th:field="*{size}" value="SMALL"/>
+        <br/>
+        <label>Medium (14-inch)</label>
+        <input type="radio" th:field="*{size}" value="MEDIUM"/>
+        <br/>
+        <label>Large (16-inch)</label>
+        <input type="radio" th:field="*{size}" value="LARGE"/>
+        <br/>
+        <label>Ginormous (20-inch)</label>
+        <input type="radio" th:field="*{size}" value="GINORMOUS"/>
+        <br/>
+        <br/>
+
+        <b>Toppings: </b><br/>
+        <li th:each="toping:${toppingsList}">
+            <input type="checkbox" th:field="*{toppings}" th:value="${toping.name()}"/>
+            <label th:for="${#ids.prev('toppings')}" th:text="${toping}">topings</label>
+        </li>
+
+        <br/><br/>
+
+
+        <input type="submit" class="button"
+               name="_eventId_addPizza" value="Continue"/>
+        <input type="submit" class="button"
+               name="_eventId_cancel" value="Cancel"/>
+    </form>
+</div>
+
+</body>
+</html>

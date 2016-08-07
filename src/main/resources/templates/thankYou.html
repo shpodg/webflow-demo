@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+  <head><title>Spring Pizza</title></head>
+
+  <body>
+	<h2>Thank you for your order!</h2>
+	
+<form method="post">
+	<input type="hidden" name="_flowExecutionKey" 
+	       th:value="${flowExecutionKey}"/>
+	<input type="submit" name="_eventId_finished" value="Finished" />
+</form>
+
+<form method="post">
+  <input type="hidden" name="_flowExecutionKey" 
+         th:value="${flowExecutionKey}"/>
+  <input type="hidden" name="_eventId"
+         value="finished" />
+  <input type="submit" value="Finished" />
+</form>
+
+		
+    <a th:href="@{${flowExecutionUrl}(_eventId=finished)}">Finish</a>
+	</body>
+</html>

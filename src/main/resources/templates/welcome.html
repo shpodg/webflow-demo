@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head><title>Spring Pizza</title></head>
+
+<body>
+<h2>Welcome to Spring Pizza!!!</h2>
+
+<form method="post">
+    <input type="hidden" name="_flowExecutionKey" th:value="${flowExecutionKey}"/>
+    <input type="text" name="phoneNumber"/><br/>
+    <input type="submit" name="_eventId_phoneEntered" value="Lookup Customer"/>
+</form>
+</body>
+</html>

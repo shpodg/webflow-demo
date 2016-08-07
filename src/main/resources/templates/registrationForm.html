@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+  <head><title>Spring Pizza</title></head>
+
+  <body>
+    <h2>Customer Registration</h2>
+    
+    <form th:object="${order}" method="post">
+      <input type="hidden" name="_flowExecutionKey" 
+             th:value="${flowExecutionKey}"/>
+      <b>Phone number: </b><input th:field="*{customer.phoneNumber}"/><br/>
+      <b>Name: </b><input th:field="*{customer.name}"/><br/>
+      <b>Address: </b><input th:field="*{customer.address}"/><br/>
+      <b>City: </b><input th:field="*{customer.city}"/><br/>
+      <b>State: </b><input th:field="*{customer.state}"/><br/>
+      <b>Zip Code: </b><input th:field="*{customer.zipCode}"/><br/>
+      <input type="submit" name="_eventId_submit" 
+             value="Submit" />
+      <input type="submit" name="_eventId_cancel" 
+             value="Cancel" />
+    </form>
+	</body>
+</html>

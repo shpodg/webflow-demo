@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head><title>Spring Pizza</title></head>
+  
+  <body>
+		<h2>Delivery Unavailable</h2>
+		
+		<p>The address is outside of our delivery area. The order
+		may still be taken for carry-out.</p>
+		
+		<a th:href="@{${flowExecutionUrl}(_eventId=accept)}">Accept</a> |
+		<a th:href="@{${flowExecutionUrl}(_eventId=cancel)}">Cancel</a>
+  </body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div>
+
+    <script>
+        function showCreditCardField() {
+            var ccNumberStyle = document.paymentForm.creditCardNumber.style;
+            ccNumberStyle.visibility = 'visible';
+        }
+
+        function hideCreditCardField() {
+            var ccNumberStyle = document.paymentForm.creditCardNumber.style;
+            ccNumberStyle.visibility = 'hidden';
+        }
+    </script>
+
+    <h2>Take Payment</h2>
+    <form th:object="${paymentDetails}" name="paymentForm" method="post">
+        <input type="hidden" name="_flowExecutionKey"
+               th:value="${flowExecutionKey}"/>
+
+        <label>Cash (taken at delivery)</label>
+        <input type="radio" th:field="*{paymentType}"
+               value="CASH"
+               onclick="hideCreditCardField()"/><br/>
+        <label>Check (taken at delivery)</label>
+        <input type="radio" th:field="*{paymentType}"
+               value="CHECK"
+               onclick="hideCreditCardField()"/><br/>
+        <label>Credit Card:</label>
+        <input type="radio" th:field="*{paymentType}"
+               value="CREDIT_CARD"
+               onclick="showCreditCardField()"/>
+
+
+        <input th:field="*{creditCardNumber}"
+               style="visibility:hidden;"/>
+
+        <br/><br/>
+        <input type="submit" class="button"
+               name="_eventId_paymentSubmitted" value="Submit"/>
+        <input type="submit" class="button"
+               name="_eventId_cancel" value="Cancel"/>
+    </form>
+</div>
+</body>
+</html>
