@@ -16,9 +16,6 @@ import java.util.List;
 public class WebFlowConfig extends AbstractFlowConfiguration {
 
     @Autowired
-    private WebMvcConfig webMvcConfig;
-
-    @Autowired
     private List<ViewResolver> viewResolvers;
 
     @Bean
@@ -50,7 +47,6 @@ public class WebFlowConfig extends AbstractFlowConfiguration {
         MvcViewFactoryCreator factoryCreator = new MvcViewFactoryCreator();
         factoryCreator.setViewResolvers(viewResolvers);
         factoryCreator.setUseSpringBeanBinding(true);
-        System.out.println(viewResolvers);
         return factoryCreator;
     }
 
